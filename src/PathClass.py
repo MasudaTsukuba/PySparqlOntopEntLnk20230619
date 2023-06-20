@@ -20,6 +20,7 @@ class PathClass:
         # path storing queries
         self.dataset_path = f'{self.working_path}/data/{dataset_name}/'  # 2023/6/15
         self.common_query_path = self.dataset_path + 'query/'
+        self.output_dir_path = f'{self.dataset_path}output/'
 
         # name of input query file
         self.input_query_file = ''  # 2023/6/14  # input_query_file
@@ -38,7 +39,7 @@ class PathClass:
 
         # path to output file
         output_file = self.input_query_file.replace('.txt', '.csv')
-        self.output_file_path = f'{self.dataset_path}/output/{output_file}'
+        self.output_file_path = f'{self.output_dir_path}{output_file}'
 
     def set_mapping_file(self, mapping_file):
         # path to mapping file

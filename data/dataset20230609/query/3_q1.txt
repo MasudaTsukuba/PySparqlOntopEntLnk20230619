@@ -3,7 +3,7 @@ PREFIX wd: <https://www.wikidata.org/wiki/>
 PREFIX pred: <http://example.com/predicate/>
 
 
-SELECT ?build_id ?country
+SELECT ?building_id ?country_id
 WHERE {
-?build_id pred:country ?country.
+?building_id pred:country ?country_id.
 }
