@@ -1,3 +1,9 @@
+# try_ontop.py
+# test function for executing sparql queries using ONTOP endpoint without URI conversion
+# for dataset20230609
+# 2023/6/19, Tadashi Masuda
+# Amagasa Laboratory, University of Tsukuba
+
 from SPARQLWrapper import SPARQLWrapper, JSON
 
 sparql = SPARQLWrapper("http://localhost:8080/sparql")  # connect to local ontop server  # 2023/6/20

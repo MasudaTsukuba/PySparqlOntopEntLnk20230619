@@ -1,3 +1,4 @@
+# PathClass
 # class for handling paths
 # 2023/6/1, Tadashi Masuda
 # Amagasa Laboratory, University of Tsukuba
@@ -22,6 +23,7 @@ class PathClass:
 
         # name of input query file
         self.input_query_file = ''  # 2023/6/14  # input_query_file
+        self.input_query_file_path = ''
 
         # path to output file
         self.output_file_path = ''  # 2023/6/14
@@ -32,6 +34,8 @@ class PathClass:
 
     def set_input_query(self, input_query_file):
         self.input_query_file = input_query_file
+        self.input_query_file_path = self.common_query_path + input_query_file
+
         # path to output file
         output_file = self.input_query_file.replace('.txt', '.csv')
         self.output_file_path = f'{self.dataset_path}/output/{output_file}'

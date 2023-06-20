@@ -1,9 +1,16 @@
+# try_query.py
+# test functions for executing sparql queries using ONTOP endpoint
+# for data_set2
+# 2023/6/19, Tadashi Masuda
+# Amagasa Laboratory, University of Tsukuba
+
 from src.ExecuteQueryClass import ExecuteQueryClass
 from src.PathClass import PathClass
+from src.SparqlQueryClass import SparqlQueryClass
 
 path = PathClass('data_set2')
-# path.common_query_path = '/home/masuda/PycharmProjects/PySparqlSqlEntLnk20230601/query/'
-execute = ExecuteQueryClass(path)
+sparql_query_instance = SparqlQueryClass(path, 'http://localhost:8080/sparql')
+execute = ExecuteQueryClass(path, sparql_query_instance)
 
 
 def test_q1():
