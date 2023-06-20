@@ -1,0 +1,47 @@
+[PrefixDeclaration]
+:		http://example.com/ontology/
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[MappingDeclaration] @collection [[
+mappingId	Hotel
+target		<http://example.com/hotel/id/{hotel_id}> a :Hotel ; rdfs:label {name} ; rdf:comment {description} . 
+source		SELECT hotel_id, name, description from hotel;
+
+mappingId	Museum
+target		<http://example.com/museum/id/{museum_id}> a :Museum ; rdfs:label {name} ; rdf:comment {description} . 
+source		SELECT museum_id, name, description from museum;
+
+mappingId	Building
+target		<http://example.com/build/id/{building_id}> a :Building ; rdfs:label {name} ; rdf:comment {description} . 
+source		SELECT building_id, name, description from building;
+
+mappingId	Heritage
+target		<http://example.com/heritage/id/{heritage_id}> a :Heritage ; rdfs:label {name} ; rdf:comment {description} . 
+source		SELECT heritage_id, name, description from heritage;
+
+mappingId	Country
+target		<http://example.com/country/id/{country_id}> <http://example.com/predicate/country_name> {country_name} ; <http://example.com/predicate/country_description> {country_description} . 
+source		SELECT country_id, country_name, country_description from country;
+
+mappingId	Museum_Country
+target		<http://example.com/museum/id/{museum_id}> <http://example.com/predicate/country> <http://example.com/country/id/{country_id}> . 
+source		SELECT museum.museum_id, country.country_id FROM museum_country, museum, country WHERE museum.museum_id = museum_country.museum_id AND museum_country.country_id = country.country_id;
+
+mappingId	Hotel_Country
+target		<http://example.com/hotel/id/{hotel_id}> <http://example.com/predicate/country> <http://example.com/country/id/{country_id}> . 
+source		SELECT hotel.hotel_id, country.country_id FROM hotel_country, hotel, country WHERE hotel.hotel_id = hotel_country.hotel_id AND hotel_country.country_id = country.country_id;
+
+mappingId	Building_Country
+target		<http://example.com/build/id/{building_id}> <http://example.com/predicate/country> <http://example.com/country/id/{country_id}> . 
+source		SELECT building.building_id, country.country_id FROM building_country, building, country WHERE building.building_id = building_country.building_id AND building_country.country_id = country.country_id;
+
+mappingId	Heritage_Country
+target		<http://example.com/heritage/id/{heritage_id}> <http://example.com/predicate/country> <http://example.com/country/id/{country_id}> . 
+source		SELECT heritage.heritage_id, country.country_id FROM heritage_country, heritage, country WHERE heritage.heritage_id = heritage_country.heritage_id AND heritage_country.country_id = country.country_id;
+]]
+
