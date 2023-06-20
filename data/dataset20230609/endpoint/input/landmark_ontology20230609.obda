@@ -1,0 +1,23 @@
+[PrefixDeclaration]
+:		http://www.semanticweb.org/masuda/ontologies/2023/5/untitled-ontology-10/
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[MappingDeclaration] @collection [[
+mappingId	Building
+target		<http://example.com/building/id/{building_id}> a <http://example.com/ontology/Building> ; rdfs:label {name} ; rdf:description {description} . 
+source		select building_id, name, description from building;
+
+mappingId	Country
+target		<http://eample.com/country?id/{country_id}> a <http://example.com/ontology/Country> ; <http://example.com/predicate/country_name> {country_name} ; <http://example.com/predicate/country_description> {country_description} . 
+source		select country_id, country_name, country_description from country;
+
+mappingId	Building_Country
+target		<http://example.com/building/id/{building_id}> <http://example.com/predicate/country> <http://example.com/country/id/{country_id}> . 
+source		SELECT building.building_id, country.country_id FROM building_country, building, country WHERE building.building_id = building_country.building_id AND building_country.country_id = country.country_id;
+]]
+

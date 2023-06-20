@@ -1,0 +1,13 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ex: <https://example.com/build_id/>
+PREFIX wd: <https://www.wikidata.org/wiki/>
+PREFIX schema: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX pred: <http://example.com/predicate/>
+
+SELECT ?building_id ?name ?country_id
+WHERE {
+?building_id pred:country ?country_id.
+?building_id <http://www.w3.org/2000/01/rdf-schema#label> ?name.
+FILTER( (?building_id = ex:899b || ?building_id = ex:1521b ) && ?country_id = wd:Q79 )
+}
