@@ -18,9 +18,10 @@ from src.UriClass import UriClass
 
 class SparqlQueryClass:  # sparql query against ontop endpoint
 
-    def __init__(self, path, endpoint):
+    def __init__(self, path, endpoint, uri):
         self.path = path
         self.sparql = SPARQLWrapper(endpoint)  # 2023/6/20  # ("http://localhost:8080/sparql")  # connect to local ontop server  # 2023/6/20
+        self.uri = uri
         pass
 
     def uri_query(self, sparql_query, header):  # 2023/6/20  # , file):  # execute sparql query
@@ -95,7 +96,7 @@ class SparqlQueryClass:  # sparql query against ontop endpoint
 
         # preparing for query
         replaced_query = replace_prefix(sparql_query)  # replace prefixes
-        str_query = UriClass.uri2str(replaced_query)  # convert global uri to local uri
+        str_query = self.uri.uri2str(replaced_query)  # convert global uri to local uri
         print(str_query)  # for debug
         self.sparql.setQuery(str_query)  # set the sparql query
         self.sparql.setReturnFormat(JSON)  # the results is in JSON format
@@ -106,7 +107,7 @@ class SparqlQueryClass:  # sparql query against ontop endpoint
         result_string = str(results["results"]["bindings"])  # list to string so that uri transformation can be applied
 
         print('start uri')  # for debug
-        replaced_string = UriClass.str2uri(result_string)  # convert local uri into global uri
+        replaced_string = self.uri.str2uri(result_string)  # convert local uri into global uri
         print('end uri')  # for debug
 
         # save the results in a csv file

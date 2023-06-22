@@ -7,9 +7,11 @@
 from src.ExecuteQueryClass import ExecuteQueryClass
 from src.PathClass import PathClass
 from src.SparqlQueryClass import SparqlQueryClass
+from src.UriClass import UriClass
 
 path = PathClass('dataset20230609')
-sparql_query_instance = SparqlQueryClass(path, 'http://localhost:8080/sparql')
+uri = UriClass('5002')  # at port 5002
+sparql_query_instance = SparqlQueryClass(path, 'http://localhost:8081/sparql', uri)
 execute = ExecuteQueryClass(path, sparql_query_instance)
 
 
