@@ -11,7 +11,8 @@ from src.UriClass import UriClass
 
 if __name__ == '__main__':
     path = PathClass('data_set2')
-    uri = UriClass('5001')  # at port 5001
+    uri = UriClass(port='5001')  # at port 5001
+    # uri = UriClass(path=path, remote=False)  # local uri trans
     sparql_query_instance = SparqlQueryClass(path, 'http://localhost:8080/sparql', uri)
     execute = ExecuteQueryClass(path, sparql_query_instance)
 
