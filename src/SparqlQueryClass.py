@@ -120,8 +120,9 @@ class SparqlQueryClass:  # sparql query against ontop endpoint
             for result in results_list_in:  # process one by one
                 row = []
                 for var in header_in:  # for each variable in the list
-                    # row.append(str2uri(result[var]["value"]))
-                    row.append(result[var]["value"])  # store the value of the variable
+                    if var != '':
+                        # row.append(str2uri(result[var]["value"]))
+                        row.append(result[var]["value"])  # store the value of the variable
                 output_temp.append(row)
             sorted_outputs = output_temp
             for i in range(len(header_in)):  # sort the results

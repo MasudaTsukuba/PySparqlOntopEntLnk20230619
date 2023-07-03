@@ -140,10 +140,10 @@ class ExecuteQueryClass:  # class for executing sparql queries
 
         with open(self.path.input_query_file_path, 'r') as f:
             sparql_query = f.read()  # read the input query
-        temp1 = sparql_query.split('SELECT ')  # for extracting variables between SELECT
+        temp1 = sparql_query.replace('  ', ' ').split('SELECT ')  # for extracting variables between SELECT
         temp2 = temp1[1].split('WHERE')  # and WHERE
-        header = temp2[0].replace('distinct ', '').replace('DISTINCT ', '').replace('\n', '').replace('?', '').split(
-            ' ')  # extract variable list
+        header = temp2[0].replace('distinct ', '').replace('DISTINCT ', '').replace('\n', '')\
+            .replace('?', '').replace('  ', ' ').split(' ')  # extract variable list
         # output_file = input_file.replace('.txt', '.csv')  # output file name
         # results = uri_query(sparql_query, header, output_file)  # execute actual query
         results = self.sparql_query_instance.uri_query(sparql_query, header)  # 2023/6/20  # , output_file)  # execute actual query
