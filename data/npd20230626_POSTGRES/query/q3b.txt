@@ -4,10 +4,8 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX npdv: <http://sws.ifi.uio.no/vocab/npd-v2#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT DISTINCT ?0 ?1 ?2 ?3
-WHERE { 
-  ?0 a npdv:Facility .
-  ?0 npdv:name ?1 .
-  ?0 npdv:registeredInCountry ?2 . 
-  ?0 npdv:idNPD ?3 . 
+SELECT ?licence_id ?licence_name
+WHERE {
+  ?licence_id a npdv:ProductionLicence .
+  ?licence_id npdv:name ?licence_name .
 }

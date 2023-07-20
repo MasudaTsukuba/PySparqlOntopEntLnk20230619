@@ -10,7 +10,7 @@ class PathClass:
     def __init__(self, dataset_name):
         # root of working path
         self.working_path = os.getcwd()
-        if self.working_path.find('data') >= 0 or self.working_path.find('npd') >= 0:
+        if self.working_path.find('data') >= 0 or self.working_path.find('npd') >= 0 or self.working_path.find('stock') >= 0:
             self.working_path = os.path.dirname(self.working_path)
         if self.working_path.endswith('src'):
             self.working_path = os.path.dirname(self.working_path)

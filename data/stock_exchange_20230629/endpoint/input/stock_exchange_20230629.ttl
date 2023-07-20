@@ -1,0 +1,221 @@
+@prefix : <http://www.owl-ontologies.com/Ontology1207768242.owl#> .
+@prefix ns: <http://www.owl-ontologies.com/Ontology1207768242.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix obda: <https://w3id.org/obda/vocabulary#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix exchange: <http://www.owl-ontologies.com/Ontology1207768242.owl#> .
+@prefix Ontology1207768242: <http://www.owl-ontologies.com/Ontology1207768242.owl#> .
+@base <http://www.owl-ontologies.com/Ontology1207768242.owl#> .
+
+<http://www.owl-ontologies.com/Ontology1207768242.owl> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#belongsToCompany
+Ontology1207768242:belongsToCompany rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf Ontology1207768242:hasStock ;
+                                    rdfs:domain Ontology1207768242:Stock ;
+                                    rdfs:range Ontology1207768242:Company .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#hasAddress
+Ontology1207768242:hasAddress rdf:type owl:ObjectProperty ;
+                              owl:inverseOf Ontology1207768242:inverseofhasAddress ;
+                              rdfs:domain Ontology1207768242:Person ;
+                              rdfs:range Ontology1207768242:Address .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#hasStock
+Ontology1207768242:hasStock rdf:type owl:ObjectProperty ;
+                            rdfs:domain Ontology1207768242:Company ;
+                            rdfs:range Ontology1207768242:Stock .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#inverseofhasAddress
+Ontology1207768242:inverseofhasAddress rdf:type owl:ObjectProperty ;
+                                       rdfs:domain Ontology1207768242:Address ;
+                                       rdfs:range Ontology1207768242:Person .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#involvesInstrument
+Ontology1207768242:involvesInstrument rdf:type owl:ObjectProperty ;
+                                      owl:inverseOf Ontology1207768242:isTradedIn ;
+                                      rdfs:domain Ontology1207768242:Transaction ;
+                                      rdfs:range Ontology1207768242:FinantialInstrument .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#isExecutedBy
+Ontology1207768242:isExecutedBy rdf:type owl:ObjectProperty ;
+                                rdfs:domain Ontology1207768242:Transaction ;
+                                rdfs:range Ontology1207768242:StockExchangeMember .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#isExecutedFor
+Ontology1207768242:isExecutedFor rdf:type owl:ObjectProperty ;
+                                 rdfs:domain Ontology1207768242:Transaction ;
+                                 rdfs:range Ontology1207768242:Investor .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#isListedIn
+Ontology1207768242:isListedIn rdf:type owl:ObjectProperty ;
+                              owl:inverseOf Ontology1207768242:listsStock ;
+                              rdfs:domain Ontology1207768242:Stock ;
+                              rdfs:range Ontology1207768242:StockExchangeList .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#isTradedIn
+Ontology1207768242:isTradedIn rdf:type owl:ObjectProperty ;
+                              rdfs:range Ontology1207768242:Transaction .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#listsStock
+Ontology1207768242:listsStock rdf:type owl:ObjectProperty ;
+                              rdfs:range Ontology1207768242:Stock .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#tradesOnBehalfOf
+Ontology1207768242:tradesOnBehalfOf rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf Ontology1207768242:usesBroker .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#usesBroker
+Ontology1207768242:usesBroker rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#Acquisition
+Ontology1207768242:Acquisition rdf:type owl:Class ;
+                               rdfs:subClassOf Ontology1207768242:Transaction .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#Address
+Ontology1207768242:Address rdf:type owl:Class ;
+                           rdfs:subClassOf owl:Thing ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty Ontology1207768242:inverseofhasAddress ;
+                                             owl:someValuesFrom owl:Thing
+                                           ] .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#Company
+Ontology1207768242:Company rdf:type owl:Class ;
+                           rdfs:subClassOf Ontology1207768242:LegalPerson .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#Dealer
+Ontology1207768242:Dealer rdf:type owl:Class ;
+                          owl:equivalentClass Ontology1207768242:Trader ;
+                          rdfs:subClassOf Ontology1207768242:StockBroker .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#FinantialInstrument
+Ontology1207768242:FinantialInstrument rdf:type owl:Class .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#Investor
+Ontology1207768242:Investor rdf:type owl:Class ;
+                            rdfs:subClassOf Ontology1207768242:Person ,
+                                            owl:Thing .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#LegalPerson
+Ontology1207768242:LegalPerson rdf:type owl:Class ;
+                               rdfs:subClassOf Ontology1207768242:Person .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#Offer
+Ontology1207768242:Offer rdf:type owl:Class ;
+                         rdfs:subClassOf Ontology1207768242:Transaction .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#Person
+Ontology1207768242:Person rdf:type owl:Class ;
+                          rdfs:subClassOf owl:Thing ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty Ontology1207768242:hasAddress ;
+                                            owl:someValuesFrom owl:Thing
+                                          ] .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#PhysicalPerson
+Ontology1207768242:PhysicalPerson rdf:type owl:Class ;
+                                  rdfs:subClassOf Ontology1207768242:Person ,
+                                                  [ rdf:type owl:Class ;
+                                                    owl:complementOf Ontology1207768242:LegalPerson
+                                                  ] .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#Stock
+Ontology1207768242:Stock rdf:type owl:Class ;
+                         rdfs:subClassOf Ontology1207768242:FinantialInstrument ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty Ontology1207768242:belongsToCompany ;
+                                           owl:someValuesFrom owl:Thing
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty Ontology1207768242:isListedIn ;
+                                           owl:someValuesFrom owl:Thing
+                                         ] .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#StockBroker
+Ontology1207768242:StockBroker rdf:type owl:Class ;
+                               rdfs:subClassOf Ontology1207768242:StockExchangeMember ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty Ontology1207768242:tradesOnBehalfOf ;
+                                                 owl:someValuesFrom owl:Thing
+                                               ] .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#StockExchangeList
+Ontology1207768242:StockExchangeList rdf:type owl:Class .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#StockExchangeMember
+Ontology1207768242:StockExchangeMember rdf:type owl:Class ;
+                                       rdfs:subClassOf Ontology1207768242:Person ,
+                                                       owl:Thing .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#StockTrader
+Ontology1207768242:StockTrader rdf:type owl:Class ;
+                               owl:equivalentClass Ontology1207768242:Trader ;
+                               rdfs:subClassOf Ontology1207768242:StockBroker .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#Trader
+Ontology1207768242:Trader rdf:type owl:Class ;
+                          rdfs:subClassOf Ontology1207768242:StockBroker .
+
+
+###  http://www.owl-ontologies.com/Ontology1207768242.owl#Transaction
+Ontology1207768242:Transaction rdf:type owl:Class ;
+                               rdfs:subClassOf owl:Thing ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty Ontology1207768242:involvesInstrument ;
+                                                 owl:someValuesFrom owl:Thing
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty Ontology1207768242:isExecutedBy ;
+                                                 owl:someValuesFrom owl:Thing
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty Ontology1207768242:isExecutedFor ;
+                                                 owl:someValuesFrom owl:Thing
+                                               ] .
+
+
+###  http://www.w3.org/2002/07/owl#Thing
+owl:Thing rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.20.2021-07-31T18:42:45Z) https://github.com/owlcs/owlapi

@@ -5,6 +5,7 @@
 
 
 import time
+from src.TimingClass import TimingClass
 # from SPARQLWrapper import SPARQLWrapper, JSON
 # import csv
 # import ast
@@ -146,7 +147,12 @@ class ExecuteQueryClass:  # class for executing sparql queries
             .replace('?', '').replace('  ', ' ').split(' ')  # extract variable list
         # output_file = input_file.replace('.txt', '.csv')  # output file name
         # results = uri_query(sparql_query, header, output_file)  # execute actual query
-        results = self.sparql_query_instance.uri_query(sparql_query, header)  # 2023/6/20  # , output_file)  # execute actual query
+
+        uri_timing = TimingClass(input_file, 'uri_execution')
+        uri_timing.record_start()
+        results = self.sparql_query_instance.uri_query(sparql_query, header, input_file)  # 2023/6/20  # , output_file)  # execute actual query
+        uri_timing.record_end()
+
         end_time = time.time()  # measure the execution time
         execution_time = end_time - start_time  # get the execution time
         print('Execution time (s): ', execution_time)  # for indicating the performance

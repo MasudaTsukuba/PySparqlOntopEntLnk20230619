@@ -8,6 +8,7 @@ from src.PathClass import PathClass
 from src.ExecuteQueryClass import ExecuteQueryClass
 from src.SparqlQueryClass import SparqlQueryClass
 from src.UriClass import UriClass
+from src.TimingClass import TimingClass
 
 if __name__ == '__main__':
     path = PathClass('npd20230626_POSTGRES')
@@ -17,9 +18,17 @@ if __name__ == '__main__':
     execute = ExecuteQueryClass(path, sparql_query_instance,)
 
     query = 'q1.txt'
-    query = 'q2.txt'
-    query = 'q3.txt'
-    query = 'q4.txt'
-    query = 'q5.txt'
+    # query = 'q2.txt'
+    # query = 'q2_MoveableFacility.txt'
+    # # query = 'q3.txt'
+    # query = 'q3b.txt'
+    # # query = 'q4.txt'
+    # # query = 'q5.txt'
+    query = 'npd_q01.txt'
+    # query = 'npd_q08.txt'
 
+    total_timing = TimingClass(query, 'total')
+    total_timing.record_start()
     execute.execute_query(query)
+    total_timing.record_end()
+    total_timing.store_timing()

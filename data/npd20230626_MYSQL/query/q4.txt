@@ -4,11 +4,11 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX npdv: <http://sws.ifi.uio.no/vocab/npd-v2#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?1 ?3 ?4
+SELECT ?var1 ?var3 ?var4
 WHERE {
-  ?0 a npdv:ProductionLicence .
-  ?0 npdv:name ?1 .
-  ?0 npdv:licenceLicensee ?2 .
-  ?2 npdv:name ?3  .
-  ?0 npdv:dateLicenseeValidFrom ?4 .
+  ?var0 a npdv:ProductionLicence .
+  ?var0 npdv:name ?var1 .
+  ?var0 npdv:licenceLicensee ?var2 .
+  ?var2 npdv:name ?var3  .
+  ?var0 npdv:dateLicenseeValidFrom ?var4 .
 }

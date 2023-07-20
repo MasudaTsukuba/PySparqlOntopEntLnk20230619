@@ -1,0 +1,135 @@
+[PrefixDeclaration]
+:		http://www.owl-ontologies.com/Ontology1207768242.owl#
+ns:		http://www.owl-ontologies.com/Ontology1207768242.owl#
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+owl2xml:		http://www.w3.org/2006/12/owl2-xml#
+exchange:	http://www.owl-ontologies.com/Ontology1207768242.owl#
+Ontology1207768242:	http://www.owl-ontologies.com/Ontology1207768242.owl#
+
+[MappingDeclaration] @collection [[
+mappingId	ID488024323
+target		:ns/{var0} a :Acquisition . 
+source		SELECT A."c0" as var0 FROM  "src_listsStock" as A, "src_inverseofhasAddress" as B, "src_Address" as C, "src_Acquisition" as D WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND A."c1" = B."c1";
+
+mappingId	ID334259935
+target		:ns/{var0} a :Transaction . 
+source		SELECT A."c0" as var0 FROM  "src_StockExchangeMember" as A, "src_Transaction" as B WHERE  A."c0" = B."c0";
+
+mappingId	ID286442404
+target		:ns/{var0} a :Address . 
+source		SELECT A."c0" as var0 FROM  "src_StockTrader" as A, "src_Acquisition" as B, "src_Address" as C WHERE  A."c0" = B."c0" AND B."c0" = C."c0";
+
+mappingId	ID-1805388859
+target		:ns/{var0} a owl:Thing . 
+source		SELECT A."c0" as var0 FROM  "src_Stock" as A, "src_Thing" as B WHERE  A."c0" = B."c0";
+
+mappingId	ID813721093
+target		:ns/{var0} :inverseofhasAddress :ns/{var1} . 
+source		SELECT A."c0" as var0, B."c1" as var1 FROM  "src_Acquisition" as A, "src_isExecutedBy" as B, "src_Thing" as C, "src_isTradedIn" as D, "src_inverseofhasAddress" as E WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND D."c0" = E."c0" AND B."c1" = D."c1" AND D."c1" = E."c1";
+
+mappingId	ID1050453632
+target		:ns/{var0} a :Company . 
+source		SELECT A."c0" as var0 FROM  "src_StockExchangeMember" as A, "src_StockBroker" as B, "src_Thing" as C, "src_hasAddress" as D, "src_Company" as E WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND D."c0" = E."c0";
+
+mappingId	ID869005012
+target		:ns/{var0} a :LegalPerson . 
+source		SELECT A."c0" as var0 FROM  "src_involvesInstrument" as A, "src_Acquisition" as B, "src_LegalPerson" as C WHERE  A."c0" = B."c0" AND B."c0" = C."c0";
+
+mappingId	ID-2131972262
+target		:ns/{var0} a :Dealer . 
+source		SELECT A."c0" as var0 FROM  "src_StockExchangeList" as A, "src_listsStock" as B, "src_PhysicalPerson" as C, "src_Dealer" as D WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0";
+
+mappingId	ID1886141860
+target		:ns/{var0} a :StockBroker . 
+source		SELECT A."c0" as var0 FROM  "src_isExecutedFor" as A, "src_StockTrader" as B, "src_Company" as C, "src_isListedIn" as D, "src_StockBroker" as E WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND D."c0" = E."c0" AND A."c1" = D."c1";
+
+mappingId	ID810547248
+target		:ns/{var0} a :Investor . 
+source		SELECT A."c0" as var0 FROM  "src_LegalPerson" as A, "src_Investor" as B WHERE  A."c0" = B."c0";
+
+mappingId	ID2137803147
+target		:ns/{var0} a :Person . 
+source		SELECT A."c0" as var0 FROM  "src_Thing" as A, "src_Person" as B WHERE  A."c0" = B."c0";
+
+mappingId	ID42378861
+target		:ns/{var0} a :Offer . 
+source		SELECT A."c0" as var0 FROM  "src_listsStock" as A, "src_StockExchangeMember" as B, "src_Offer" as C WHERE  A."c0" = B."c0" AND B."c0" = C."c0";
+
+mappingId	ID-707192009
+target		:ns/{var0} :hasAddress :ns/{var1} . 
+source		SELECT A."c0" as var0, B."c1" as var1 FROM  "src_Offer" as A, "src_hasAddress" as B WHERE  A."c0" = B."c0";
+
+mappingId	ID-916943460
+target		:ns/{var0} a :PhysicalPerson . 
+source		SELECT A."c0" as var0 FROM  "src_StockExchangeList" as A, "src_usesBroker" as B, "src_listsStock" as C, "src_involvesInstrument" as D, "src_PhysicalPerson" as E WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND D."c0" = E."c0" AND B."c1" = C."c1" AND C."c1" = D."c1";
+
+mappingId	ID-627231324
+target		:ns/{var0} a :Stock . 
+source		SELECT A."c0" as var0 FROM  "src_Thing" as A, "src_Person" as B, "src_involvesInstrument" as C, "src_FinantialInstrument" as D, "src_Stock" as E WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND D."c0" = E."c0";
+
+mappingId	ID222591606
+target		:ns/{var0} a :FinantialInstrument . 
+source		SELECT A."c0" as var0 FROM  "src_Offer" as A, "src_involvesInstrument" as B, "src_StockExchangeList" as C, "src_LegalPerson" as D, "src_FinantialInstrument" as E WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND D."c0" = E."c0";
+
+mappingId	ID1775374552
+target		:ns/{var0} :isListedIn :ns/{var1} . 
+source		SELECT A."c0" as var0, A."c1" as var1 FROM  "src_isTradedIn" as A, "src_isListedIn" as B WHERE  A."c0" = B."c0" AND A."c1" = B."c1";
+
+mappingId	ID1522586062
+target		:ns/{var0} :belongsToCompany :ns/{var1} . 
+source		SELECT A."c0" as var0, D."c1" as var1 FROM  "src_StockExchangeMember" as A, "src_Thing" as B, "src_Trader" as C, "src_tradesOnBehalfOf" as D, "src_belongsToCompany" as E WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND D."c0" = E."c0" AND D."c1" = E."c1";
+
+mappingId	ID-274752427
+target		:ns/{var0} a :StockExchangeMember . 
+source		SELECT A."c0" as var0 FROM  "src_StockExchangeList" as A, "src_Company" as B, "src_isExecutedBy" as C, "src_StockTrader" as D, "src_StockExchangeMember" as E WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND D."c0" = E."c0";
+
+mappingId	ID-1371675687
+target		:ns/{var0} :tradesOnBehalfOf :ns/{var1} . 
+source		SELECT A."c0" as var0, A."c1" as var1 FROM  "src_hasAddress" as A, "src_Company" as B, "src_tradesOnBehalfOf" as C WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND A."c1" = C."c1";
+
+mappingId	ID-1889723613
+target		:ns/{var0} a :StockTrader . 
+source		SELECT A."c0" as var0 FROM  "src_Company" as A, "src_StockTrader" as B WHERE  A."c0" = B."c0";
+
+mappingId	ID361159579
+target		:ns/{var0} a :Trader . 
+source		SELECT A."c0" as var0 FROM  "src_Transaction" as A, "src_Acquisition" as B, "src_StockTrader" as C, "src_Trader" as D WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0";
+
+mappingId	ID207600019
+target		:ns/{var0} :isExecutedFor :ns/{var1} . 
+source		SELECT A."c0" as var0, A."c1" as var1 FROM  "src_inverseofhasAddress" as A, "src_involvesInstrument" as B, "src_Person" as C, "src_hasStock" as D, "src_isExecutedFor" as E WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND D."c0" = E."c0" AND A."c1" = B."c1" AND B."c1" = D."c1" AND D."c1" = E."c1";
+
+mappingId	ID2028612478
+target		:ns/{var0} :isExecutedBy :ns/{var1} . 
+source		SELECT A."c0" as var0, A."c1" as var1 FROM  "src_isListedIn" as A, "src_isTradedIn" as B, "src_inverseofhasAddress" as C, "src_isExecutedFor" as D, "src_isExecutedBy" as E WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND D."c0" = E."c0" AND A."c1" = B."c1" AND B."c1" = C."c1" AND C."c1" = D."c1" AND D."c1" = E."c1";
+
+mappingId	ID1219222844
+target		:ns/{var0} :involvesInstrument :ns/{var1} . 
+source		SELECT A."c0" as var0, C."c1" as var1 FROM  "src_Acquisition" as A, "src_StockExchangeMember" as B, "src_involvesInstrument" as C WHERE  A."c0" = B."c0" AND B."c0" = C."c0";
+
+mappingId	ID351802208
+target		:ns/{var0} :hasStock :ns/{var1} . 
+source		SELECT A."c0" as var0, B."c1" as var1 FROM  "src_LegalPerson" as A, "src_isExecutedBy" as B, "src_hasStock" as C WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND B."c1" = C."c1";
+
+mappingId	ID-1135973963
+target		:ns/{var0} a :StockExchangeList . 
+source		SELECT A."c0" as var0 FROM  "src_inverseofhasAddress" as A, "src_StockExchangeMember" as B, "src_StockExchangeList" as C WHERE  A."c0" = B."c0" AND B."c0" = C."c0";
+
+mappingId	ID246426016
+target		:ns/{var0} :listsStock :ns/{var1} . 
+source		SELECT A."c0" as var0, D."c1" as var1 FROM  "src_FinantialInstrument" as A, "src_Address" as B, "src_StockTrader" as C, "src_listsStock" as D WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0";
+
+mappingId	ID298686742
+target		:ns/{var0} :isTradedIn :ns/{var1} . 
+source		SELECT A."c0" as var0, A."c1" as var1 FROM  "src_isListedIn" as A, "src_Company" as B, "src_Thing" as C, "src_isTradedIn" as D WHERE  A."c0" = B."c0" AND B."c0" = C."c0" AND C."c0" = D."c0" AND A."c1" = D."c1";
+
+mappingId	ID942997485
+target		:ns/{var0} :usesBroker :ns/{var1} . 
+source		SELECT A."c0" as var0, B."c1" as var1 FROM  "src_Person" as A, "src_usesBroker" as B WHERE  A."c0" = B."c0";
+]]
+

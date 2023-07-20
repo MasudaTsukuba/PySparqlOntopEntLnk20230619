@@ -14,6 +14,7 @@ from rdflib.plugins.sparql.parser import parseQuery
 # from rdflib.plugins.sparql.algebra import translatePrologue
 # import rdflib.plugins.sparql.parser
 from src.UriClass import UriClass
+from src.TimingClass import TimingClass
 
 
 class SparqlQueryClass:  # sparql query against ontop endpoint
@@ -24,7 +25,7 @@ class SparqlQueryClass:  # sparql query against ontop endpoint
         self.uri = uri
         pass
 
-    def uri_query(self, sparql_query, header):  # 2023/6/20  # , file):  # execute sparql query
+    def uri_query(self, sparql_query, header, input_file):  # 2023/6/20  # , file):  # execute sparql query
         # def uri2str(uri_input):
         #     return_string = uri_input
         #     for match in re.finditer(r'<(.*?)>', uri_input):
@@ -78,7 +79,10 @@ class SparqlQueryClass:  # sparql query against ontop endpoint
             # prefix_items = parsed_query.as_list()[0]
             prefix_items = parsed_query[0]
             for decl in prefix_items:
-                prefix_string = decl['prefix']  # ex
+                try:
+                    prefix_string = decl['prefix']  # ex
+                except KeyError:
+                    prefix_string = '@NONE'  # 2023/7/11 in case of ':'
                 iri_string = decl['iri']  # http://example.com/
                 prefixes[prefix_string] = str(iri_string)
                 pass
@@ -92,22 +96,40 @@ class SparqlQueryClass:  # sparql query against ontop endpoint
             for prefix, uri in prefixes.items():
                 pattern = re.compile(fr'{prefix}:(\w*)')
                 return_query = pattern.sub(f'<{uri}\\1>', return_query)  # replace the prefixed entity with its actual value
+            try:
+                if prefixes['@NONE']:  # 2023/7/11
+                    uri = prefixes['@NONE']
+                    pattern = re.compile(fr' :(\w*)')
+                    return_query = pattern.sub(f' <{uri}\\1>', return_query)  # replace the prefixed entity with its actual value
+            except KeyError:
+                pass
             return return_query
 
         # preparing for query
+        uri2str_timing = TimingClass(input_file, 'uri2str')
+        uri2str_timing.record_start()
         replaced_query = replace_prefix(sparql_query)  # replace prefixes
         str_query = self.uri.uri2str(replaced_query)  # convert global uri to local uri
+        uri2str_timing.record_end()
         print(str_query)  # for debug
+
         self.sparql.setQuery(str_query)  # set the sparql query
         self.sparql.setReturnFormat(JSON)  # the results is in JSON format
 
         # start query against ontop
-        results = self.sparql.query().convert()  # execute saprql query against a sparql endpoint
+        sparql_timing = TimingClass(input_file, 'ontop_sparql')
+        sparql_timing.record_start()
+        results = self.sparql.query().convert()  # execute sparql query against a sparql endpoint
+        sparql_timing.record_end()
+
         print(len(results["results"]["bindings"]))  # for debug
         result_string = str(results["results"]["bindings"])  # list to string so that uri transformation can be applied
 
         print('start uri')  # for debug
+        str2uri_timing = TimingClass(input_file, 'str2uri')
+        str2uri_timing.record_start()
         replaced_string = self.uri.str2uri(result_string)  # convert local uri into global uri
+        str2uri_timing.record_end()
         print('end uri')  # for debug
 
         # save the results in a csv file
@@ -134,5 +156,8 @@ class SparqlQueryClass:  # sparql query against ontop endpoint
             with open(self.path.output_file_path, 'w') as file:  # write to a csv file
                 csv_writer = csv.writer(file, lineterminator='\n')
                 csv_writer.writerows(outputs)
+        output_timing = TimingClass(input_file, 'output')
+        output_timing.record_start()
         output_results(header, results_list)  # save the result in a csv file
+        output_timing.record_end()
         return results_list

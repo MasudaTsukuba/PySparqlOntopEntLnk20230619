@@ -5,9 +5,9 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX npdv: <http://sws.ifi.uio.no/vocab/npd-v2#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT  ?0 
+SELECT  ?var0
 WHERE {
-  ?0 a npdv:ProductionLicence .
+  ?var0 a npdv:ProductionLicence .
 }
 [QueryItem="Q2"]
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -16,12 +16,12 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX npdv: <http://sws.ifi.uio.no/vocab/npd-v2#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT DISTINCT ?0 ?1 ?2 ?3
+SELECT DISTINCT ?var0 ?var1 ?var2 ?var3
 WHERE { 
-  ?0 a npdv:Facility .
-  ?0 npdv:name ?1 .
-  ?0 npdv:registeredInCountry ?2 . 
-  ?0 npdv:idNPD ?3 . 
+  ?var0 a npdv:Facility .
+  ?var0 npdv:name ?var1 .
+  ?var0 npdv:registeredInCountry ?var2 .
+  ?var0 npdv:idNPD ?var3 .
 }
 [QueryItem="Q3"]
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -30,12 +30,12 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX npdv: <http://sws.ifi.uio.no/vocab/npd-v2#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?1 ?2 ?3
+SELECT ?var1 ?var2 ?var3
 WHERE {
-  ?0 a npdv:ProductionLicence .
-  ?0 npdv:name ?1 .
-  ?0 npdv:dateLicenceGranted ?2 .
-  ?0 npdv:dateLicenceValidTo ?3 .
+  ?var0 a npdv:ProductionLicence .
+  ?var0 npdv:name ?var1 .
+  ?var0 npdv:dateLicenceGranted ?var2 .
+  ?var0 npdv:dateLicenceValidTo ?var3 .
 }
 [QueryItem="Q4"]
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -44,13 +44,13 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX npdv: <http://sws.ifi.uio.no/vocab/npd-v2#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?1 ?3 ?4
+SELECT ?var1 ?var3 ?var4
 WHERE {
-  ?0 a npdv:ProductionLicence .
-  ?0 npdv:name ?1 .
-  ?0 npdv:licenceLicensee ?2 .
-  ?2 npdv:name ?3  .
-  ?0 npdv:dateLicenseeValidFrom ?4 . 
+  ?var0 a npdv:ProductionLicence .
+  ?var0 npdv:name ?var1 .
+  ?var0 npdv:licenceLicensee ?var2 .
+  ?var2 npdv:name ?var3  .
+  ?var0 npdv:dateLicenseeValidFrom ?var4 .
 }
 [QueryItem="Q5"]
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -59,13 +59,13 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX npdv: <http://sws.ifi.uio.no/vocab/npd-v2#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT  ?0 ?1 ?2 ?3 ?4 ?5  
+SELECT  ?var0 ?var1 ?var2 ?var3 ?var4 ?var5
 WHERE {
-  ?0 a npdv:FieldReserve .
-  ?0 npdv:remainingCondensate     ?1 .
-  ?0 npdv:remainingGas            ?2 .
-  ?0 npdv:remainingNGL            ?3 .
-  ?0 npdv:remainingOil            ?4 .
-  ?0 npdv:remainingOilEquivalents ?5  .
+  ?var0 a npdv:FieldReserve .
+  ?var0 npdv:remainingCondensate     ?var1 .
+  ?var0 npdv:remainingGas            ?var2 .
+  ?var0 npdv:remainingNGL            ?var3 .
+  ?var0 npdv:remainingOil            ?var4 .
+  ?var0 npdv:remainingOilEquivalents ?var5  .
   
 }

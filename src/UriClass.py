@@ -27,7 +27,7 @@ class UriClass:
             self.inv_dict_all = {}
             self.read_entity_linking_from_csv()
 
-            with open(self.path.dataset_path + '/dict/uri_dict.csv', 'r') as csv_file:
+            with open(self.path.dataset_path + 'dict/uri_dict.csv', 'r') as csv_file:
                 reader = csv.DictReader(csv_file)
                 temp_dict = [row for row in reader]
                 for row in temp_dict:
