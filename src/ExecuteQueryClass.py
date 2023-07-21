@@ -136,6 +136,8 @@ class ExecuteQueryClass:  # class for executing sparql queries
         #         csv_writer.writerows(outputs)
         #     return results
 
+        total_execution_timing = TimingClass(input_file, 'total_execution')
+        # total_timing.record_start()
         start_time = time.time()  # record start time
         self.path.set_input_query(input_file)  # set the input query file name
 
@@ -149,10 +151,11 @@ class ExecuteQueryClass:  # class for executing sparql queries
         # results = uri_query(sparql_query, header, output_file)  # execute actual query
 
         uri_timing = TimingClass(input_file, 'uri_execution')
-        uri_timing.record_start()
+        # uri_timing.record_start()
         results = self.sparql_query_instance.uri_query(sparql_query, header, input_file)  # 2023/6/20  # , output_file)  # execute actual query
         uri_timing.record_end()
 
+        total_execution_timing.record_end()
         end_time = time.time()  # measure the execution time
         execution_time = end_time - start_time  # get the execution time
         print('Execution time (s): ', execution_time)  # for indicating the performance
