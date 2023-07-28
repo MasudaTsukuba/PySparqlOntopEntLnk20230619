@@ -16,17 +16,29 @@ if __name__ == '__main__':
     uri = UriClass(path=path, remote=False)  # at port 5003
     sparql_query_instance = SparqlQueryClass(path, 'http://localhost:8083/sparql', uri)  # 8083
     execute = ExecuteQueryClass(path, sparql_query_instance,)
+    TimingClass.set_file_name('timing_npd20230626_ontop.csv', initialize=True, time_stamp=True)
 
-    query = 'q1.txt'
-    # query = 'q2.txt'
-    # query = 'q2_MoveableFacility.txt'
-    # # query = 'q3.txt'
-    # query = 'q3b.txt'
-    # # query = 'q4.txt'
-    # # query = 'q5.txt'
-    query = 'npd_q01.txt'
-    # query = 'npd_q08.txt'
+    for i in range(5):
+        query = 'q1.txt'
+        execute.execute_query(query)
+        TimingClass.store_timing()
 
-    TimingClass.set_file_name('timing.csv', time_stamp=True)
-    execute.execute_query(query)
-    TimingClass.store_timing()
+        query = 'q3.txt'
+        execute.execute_query(query)
+        TimingClass.store_timing()
+
+        query = 'q4.txt'
+        execute.execute_query(query)
+        TimingClass.store_timing()
+
+        query = 'q5.txt'
+        execute.execute_query(query)
+        TimingClass.store_timing()
+
+        query = 'npd_q01.txt'
+        execute.execute_query(query)
+        TimingClass.store_timing()
+
+        query = 'npd_q08.txt'
+        execute.execute_query(query)
+        TimingClass.store_timing()

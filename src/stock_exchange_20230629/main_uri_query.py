@@ -8,6 +8,7 @@ from src.PathClass import PathClass
 from src.ExecuteQueryClass import ExecuteQueryClass
 from src.SparqlQueryClass import SparqlQueryClass
 from src.UriClass import UriClass
+from src.TimingClass import TimingClass
 
 if __name__ == '__main__':
     path = PathClass('stock_exchange_20230629')
@@ -18,14 +19,18 @@ if __name__ == '__main__':
 
     query = 'Q1.txt'
     query = 'Q1_trader.txt'
-    # query = 'Q2.txt'
-    query = 'Q2_PhysicalPerson.txt'
-    # query = 'Q3.txt'
-    query = 'Q3a.txt'
+    query = 'Q2.txt'
+    # query = 'Q2_PhysicalPerson.txt'
+    query = 'Q3.txt'
+    # query = 'Q3a.txt'
     # query = 'Q3b.txt'
     # query = 'Q3c.txt'
     # query = 'Q3d.txt'
     # query = 'Q3e.txt'
     # query = 'Q3f.txt'
+    query = 'Q4.txt'
+    query = 'Q5.txt'
 
+    TimingClass.set_file_name('timing.csv', time_stamp=True)
     execute.execute_query(query)
+    TimingClass.store_timing()

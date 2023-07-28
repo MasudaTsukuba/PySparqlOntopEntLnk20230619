@@ -9,23 +9,23 @@ rdfs:		http://www.w3.org/2000/01/rdf-schema#
 
 [MappingDeclaration] @collection [[
 mappingId	Hotel
-target		<http://example.com/hotel/id/{hotel_id}> a :Hotel ; rdfs:label {name} ; rdf:comment {description} .
+target		<http://example.com/hotel/id/{hotel_id}> a :Hotel ; rdfs:label {name} ; rdf:comment {description} . 
 source		SELECT hotel_id, name, description from hotel;
 
 mappingId	Museum
-target		<http://example.com/museum/id/{museum_id}> a :Museum ; rdfs:label {name} ; rdf:comment {description} .
+target		<http://example.com/museum/id/{museum_id}> a :Museum ; rdfs:label {name} ; rdf:comment {description} . 
 source		SELECT museum_id, name, description from museum;
 
 mappingId	Building
-target		<http://example.com/build/id/{building_id}> a :Building ; rdfs:label {name} ; rdf:comment {description} .
+target		<http://example.com/build/id/{building_id}> a :Building ; rdfs:label {name} ; rdf:comment {description} . 
 source		SELECT building_id, name, description from building;
 
 mappingId	Heritage
-target		<http://example.com/heritage/id/{heritage_id}> a :Heritage ; rdfs:label {name} ; rdf:comment {description} .
+target		<http://example.com/heritage/id/{heritage_id}> a :Heritage ; rdfs:label {name} ; rdf:comment {description} . 
 source		SELECT heritage_id, name, description from heritage;
 
 mappingId	Country
-target		<http://example.com/country/id/{country_id}> <http://example.com/predicate/country_name> {country_name} ; <http://example.com/predicate/country_description> {country_description} .
+target		<http://example.com/country/id/{country_id}> <http://example.com/predicate/country_name> {country_name} ; <http://example.com/predicate/country_description> {country_description} . 
 source		SELECT country_id, country_name, country_description from country;
 
 mappingId	Museum_Country
