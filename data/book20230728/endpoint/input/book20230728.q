@@ -135,3 +135,12 @@ SELECT DISTINCT ?genre_label
 WHERE{
     wd:Q1004 rdfs:label ?genre_label.
  }
+[QueryItem="q6_cat_description"]
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX schema: <http://schema.org/>
+SELECT ?book_description
+WHERE{
+    wd:Q35690 schema:description ?book_description .
+}

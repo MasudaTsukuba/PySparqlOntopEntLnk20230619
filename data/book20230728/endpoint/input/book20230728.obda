@@ -9,6 +9,7 @@ xml:		http://www.w3.org/XML/1998/namespace
 xsd:		http://www.w3.org/2001/XMLSchema#
 obda:		https://w3id.org/obda/vocabulary#
 rdfs:		http://www.w3.org/2000/01/rdf-schema#
+schema:		http://schema.org/
 
 [MappingDeclaration] @collection [[
 mappingId	101: book_type
@@ -38,5 +39,9 @@ source		select genre_id from genre;
 mappingId	106: genre_label
 target		wd:{genre_id} rdfs:label {genre_label} . 
 source		select genre_id, genre_label from genre;
+
+mappingId	107: book_description
+target		wd:{book_id} schema:description {book_description} . 
+source		select book_id, book_description from book_description ;
 ]]
 
