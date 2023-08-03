@@ -1,0 +1,42 @@
+[PrefixDeclaration]
+:		http://www.semanticweb.org/masuda/ontologies/2023/8/book20230728/
+ex:		http://example.com/
+wd:		http://www.wikidata.org/entity/
+owl:		http://www.w3.org/2002/07/owl#
+rdf:		http://www.w3.org/1999/02/22-rdf-syntax-ns#
+wdt:		http://www.wikidata.org/prop/direct/
+xml:		http://www.w3.org/XML/1998/namespace
+xsd:		http://www.w3.org/2001/XMLSchema#
+obda:		https://w3id.org/obda/vocabulary#
+rdfs:		http://www.w3.org/2000/01/rdf-schema#
+
+[MappingDeclaration] @collection [[
+mappingId	101: book_type
+target		wd:{book_id} a ex:Book . 
+source		select book_id from book_title
+
+mappingId	104: author_type
+target		wd:{author_id} a ex:Author . 
+source		select author_id from author
+
+mappingId	100: book_title
+target		wd:{book_id} rdfs:label {book_title} . 
+source		select book_id, book_title from book_title;
+
+mappingId	102: book_author
+target		wd:{book_id} wdt:P50 wd:{author_id} . 
+source		select book_id, author_id from book_author
+
+mappingId	103: author_name
+target		wd:{author_id} rdfs:label {author_name} . 
+source		select author_id, author_name from author;
+
+mappingId	105: genre_type
+target		wd:{genre_id} a ex:Genre . 
+source		select genre_id from genre;
+
+mappingId	106: genre_label
+target		wd:{genre_id} rdfs:label {genre_label} . 
+source		select genre_id, genre_label from genre;
+]]
+

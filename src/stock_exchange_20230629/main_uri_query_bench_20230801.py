@@ -16,21 +16,13 @@ if __name__ == '__main__':
     uri = UriClass(path=path, remote=False)
     sparql_query_instance = SparqlQueryClass(path, 'http://localhost:8084/sparql', uri)  # 8084
     execute = ExecuteQueryClass(path, sparql_query_instance)
+    TimingClass.set_file_name('timing_stock_ontop_20230801.csv', initialize=True, time_stamp=True)
 
-    query = 'Q1.txt'
-    query = 'Q1_trader.txt'
-    query = 'Q2.txt'
-    # query = 'Q2_PhysicalPerson.txt'
-    # query = 'Q3.txt'
-    # query = 'Q3a.txt'
-    # query = 'Q3b.txt'
-    # query = 'Q3c.txt'
-    # query = 'Q3d.txt'
-    # query = 'Q3e.txt'
-    # query = 'Q3f.txt'
-    # query = 'Q4.txt'
-    # query = 'Q5.txt'
+    for i in range(5):
+        query = 'Q1.txt'
+        execute.execute_query(query)
+        TimingClass.store_timing()
 
-    TimingClass.set_file_name('timing.csv', time_stamp=True)
-    execute.execute_query(query)
-    TimingClass.store_timing()
+        query = 'Q2.txt'
+        execute.execute_query(query)
+        TimingClass.store_timing()
