@@ -17,14 +17,6 @@
 #    Object Properties
 #################################################################
 
-###  http://schema.org/description
-schema:description rdf:type owl:ObjectProperty .
-
-
-###  http://www.w3.org/2000/01/rdf-schema#label
-rdfs:label rdf:type owl:ObjectProperty .
-
-
 ###  http://www.wikidata.org/prop/direct/P50
 wdt:P50 rdf:type owl:ObjectProperty .
 
@@ -32,6 +24,14 @@ wdt:P50 rdf:type owl:ObjectProperty .
 #################################################################
 #    Data properties
 #################################################################
+
+###  http://schema.org/description
+schema:description rdf:type owl:DatatypeProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdf:type owl:DatatypeProperty .
+
 
 ###  http://www.w3.org/1999/02/22-rdf-syntax-ns#type
 rdf:type rdf:type owl:DatatypeProperty .
