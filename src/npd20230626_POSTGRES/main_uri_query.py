@@ -17,16 +17,20 @@ if __name__ == '__main__':
     sparql_query_instance = SparqlQueryClass(path, 'http://localhost:8083/sparql', uri)  # 8083
     execute = ExecuteQueryClass(path, sparql_query_instance,)
 
-    query = 'q1.txt'
+    # query = 'q1.txt'
     # query = 'q2.txt'
     # query = 'q2_MoveableFacility.txt'
     # # query = 'q3.txt'
     # query = 'q3b.txt'
-    # # query = 'q4.txt'
+    # query = 'q4.txt'
+    # query = 'q4_ProductionLicence.txt'
     # # query = 'q5.txt'
-    query = 'npd_q01.txt'
+    # query = 'q6a.txt'
+    # query = 'q7a.txt'
+    query = 'q9a.txt'
+    # query = 'npd_q01.txt'
     # query = 'npd_q08.txt'
 
     TimingClass.set_file_name('timing.csv', time_stamp=True)
-    execute.execute_query(query)
+    results = execute.execute_query(query)
     TimingClass.store_timing()
